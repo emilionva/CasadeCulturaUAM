@@ -4,6 +4,7 @@
  */
 package inicio.pvoe;
 
+import consulta.pvoe.consulta;
 import login.pvoe.login;
 import inscripcion.pvoe.inscripcion;
 import nuevoUsuario.pvoe.nuevoUsuario;
@@ -38,7 +39,7 @@ public class inicio extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         BtnRegistrar = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        BtnConsulta = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         BtnAdministradorNuevo = new javax.swing.JButton();
         BtnSalir = new javax.swing.JButton();
@@ -66,7 +67,12 @@ public class inicio extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Helvetica Neue", 0, 24)); // NOI18N
         jLabel3.setText("Consulta de Usuarios y Talleres");
 
-        jButton2.setText("Consulta");
+        BtnConsulta.setText("Consulta");
+        BtnConsulta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnConsultaActionPerformed(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("Helvetica Neue", 0, 24)); // NOI18N
         jLabel4.setText("Nuevo Administrador");
@@ -108,7 +114,7 @@ public class inicio extends javax.swing.JFrame {
                         .addComponent(jLabel1))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(339, 339, 339)
-                        .addComponent(jButton2))
+                        .addComponent(BtnConsulta))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(338, 338, 338)
                         .addComponent(BtnRegistrar))
@@ -132,7 +138,7 @@ public class inicio extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jLabel3)
                 .addGap(18, 18, 18)
-                .addComponent(jButton2)
+                .addComponent(BtnConsulta)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel4)
                 .addGap(18, 18, 18)
@@ -179,6 +185,13 @@ public class inicio extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_BtnAdministradorNuevoActionPerformed
 
+    private void BtnConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnConsultaActionPerformed
+        // TODO add your handling code here:
+        consulta consultaFrame =new consulta();
+        consultaFrame.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_BtnConsultaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -216,10 +229,10 @@ public class inicio extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnAdministradorNuevo;
+    private javax.swing.JButton BtnConsulta;
     private javax.swing.JButton BtnRegistrar;
     private javax.swing.JButton BtnSalir;
     private javax.swing.JPanel PanelBackground;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

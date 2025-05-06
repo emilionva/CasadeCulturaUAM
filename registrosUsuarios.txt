@@ -1,0 +1,20 @@
+Nombre: Emilio
+Primer Apellido: Nava
+Segundo Apellido: Uribe
+Edad: 21
+Género: Masculino
+Dirección: abcdefghijklmnopqrstuvwxyz
+Teléfono de emergencia: 1234567789
+Teléfono de contacto: 1234567789
+Talleres seleccionados: Teatro, Pintura
+Costo Total: $950.0
+Nombre: EMilio
+Primer Apellido: wedw
+Segundo Apellido: wed
+Edad: wd
+Género: Masculino
+Dirección: dwed
+Teléfono de emergencia: dwedwwdew
+Teléfono de contacto: dwdedwe
+Talleres seleccionados: Teatro, Pintura
+Costo Total: $950.0

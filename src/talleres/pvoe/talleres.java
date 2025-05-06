@@ -27,7 +27,7 @@ public class talleres extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
-   // Método para capturar los talleres seleccionados
+
     private List<String> getSelectedTalleres() {
         List<String> talleresSeleccionados = new ArrayList<>();
         if (ChBoxTeatro.isSelected()) talleresSeleccionados.add("Teatro");
@@ -39,11 +39,9 @@ public class talleres extends javax.swing.JFrame {
         return talleresSeleccionados;
     }
 
-    // Método para calcular el costo total dependiendo de los talleres seleccionados
     private double getCostoTotal(List<String> talleresSeleccionados) {
         double costoTotal = 0.0;
 
-        // Mapa de los costos por curso y material
         Map<String, Double[]> costos = new HashMap<>();
         costos.put("Teatro", new Double[] {500.0, 550.0});
         costos.put("Danza", new Double[] {300.0, 400.0});
@@ -52,29 +50,25 @@ public class talleres extends javax.swing.JFrame {
         costos.put("Dibujo", new Double[] {750.0, 1200.0});
         costos.put("Pintura", new Double[] {300.0, 400.0});
 
-        // Cálculo de costo total de los talleres seleccionados
         for (String taller : talleresSeleccionados) {
             Double[] costo = costos.get(taller);
             if (costo != null) {
-                // Si se selecciona "Sí" para agregar material, tomar el segundo costo (con material)
                 if (RBtnSi.isSelected()) {
-                    costoTotal += costo[1];  // Costo con material
+                    costoTotal += costo[1];
                 } else {
-                    costoTotal += costo[0];  // Costo sin material
+                    costoTotal += costo[0];
                 }
             }
         }
         return costoTotal;
     }
 
-    // Método para leer los cursos desde un archivo .txt
     private List<String[]> readCourses(String filePath) {
         List<String[]> courses = new ArrayList<>();
         try {
             BufferedReader br = new BufferedReader(new FileReader(filePath));
             String line;
             while ((line = br.readLine()) != null) {
-                // Asumiendo que los datos están separados por comas
                 String[] courseData = line.split(",");
                 courses.add(courseData);
             }
@@ -85,15 +79,12 @@ public class talleres extends javax.swing.JFrame {
         return courses;
     }
 
-    // Método para actualizar la tabla con los datos de los talleres
     private void updateTableWithData() {
-        String filePath = "Talleres.txt";  // Ruta del archivo con los datos de los talleres
+        String filePath = "Talleres.txt";
         List<String[]> courses = readCourses(filePath);
 
         DefaultTableModel model = (DefaultTableModel) TablaTalleres.getModel();
-        model.setRowCount(0);  // Limpiar cualquier dato anterior
-
-        // Agregar los cursos a la tabla
+        model.setRowCount(0);
         for (String[] course : courses) {
             model.addRow(course);
         }
@@ -320,43 +311,41 @@ public class talleres extends javax.swing.JFrame {
 
     private void BtnInscribirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnInscribirActionPerformed
         // TODO add your handling code here:\
-      // Obtener los talleres seleccionados
+        
     List<String> talleresSeleccionados = getSelectedTalleres();
 
     if (talleresSeleccionados.isEmpty()) {
         JOptionPane.showMessageDialog(this, "Debe seleccionar al menos un taller.");
-        return;  // Si no se selecciona ningún taller, no continuar
+        return;
     }
 
     // Obtener el costo total de los talleres seleccionados
     double costoTotal = getCostoTotal(talleresSeleccionados);
 
-    // Crear el texto que se guardará en el archivo registroUsuarios.txt (solo los talleres)
+    //String de la respuesta
     String registro = "Talleres seleccionados: " + String.join(", ", talleresSeleccionados) 
-                      + ", Costo Total: $" + costoTotal + "\n";
+                      + "\n" + "Costo Total: $" + costoTotal + "\n"+"\n";
 
-    // Ruta del archivo en el mismo directorio
-    String filePath = "registrosUsuarios.txt";  // Utiliza la ruta del archivo actual
-
+    String filePath = "registrosUsuarios.txt";
+    
     try {
-        // Usar el mismo enfoque de FileWriter y BufferedWriter
-        FileWriter fw = new FileWriter(filePath, true);  // 'true' para agregar al archivo si ya existe
+        FileWriter fw = new FileWriter(filePath, true); 
         BufferedWriter bw = new BufferedWriter(fw);
         bw.write(registro);
         bw.close();
         JOptionPane.showMessageDialog(this, "¡Inscripción exitosa!");
     } catch (IOException e) {
         JOptionPane.showMessageDialog(this, "Error al guardar la inscripción.");
-        e.printStackTrace();  // Imprime el error para la depuración
+        e.printStackTrace(); 
     }
+    
     }//GEN-LAST:event_BtnInscribirActionPerformed
 
     private void BtnAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAtrasActionPerformed
         // TODO add your handling code here:
-        // Aquí agregamos la acción del botón BtnAtras
-        this.dispose();  // Cierra la ventana actual
-        inscripcion reg = new inscripcion();  // Crea una nueva instancia de la ventana de Registro
-        reg.setVisible(true);  // Muestra la nueva ventana
+        this.dispose();
+        inscripcion reg = new inscripcion();
+        reg.setVisible(true);
     }//GEN-LAST:event_BtnAtrasActionPerformed
 
     /**
@@ -385,8 +374,6 @@ public class talleres extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(talleres.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
-        /* Set the Nimbus look and feel */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -404,7 +391,6 @@ public class talleres extends javax.swing.JFrame {
             }
         });
     }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnAtras;
     private javax.swing.JButton BtnInscribir;

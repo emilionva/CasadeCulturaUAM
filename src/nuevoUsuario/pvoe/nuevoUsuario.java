@@ -22,7 +22,7 @@ public class nuevoUsuario extends javax.swing.JFrame {
     public nuevoUsuario() {
         initComponents();
         setTitle("Casa de la Cultura - UAM Azcapotzalco :: Nuevo Usuario ");
-        setSize(654, 400);  // Establece el tamaño manual de la ventana
+        setSize(654, 400);
         setLocationRelativeTo(null);
     }
     /**
@@ -142,36 +142,29 @@ public class nuevoUsuario extends javax.swing.JFrame {
 
     private void BtnAgregarAdministadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAgregarAdministadorActionPerformed
         // TODO add your handling code here:
-        // Obtener los valores ingresados en los campos de texto
     String nombreUsuario = TxtFieldNombreUsuario.getText().trim();
     String contrasena = TxtFieldContrasena.getText().trim();
 
-    // Verificar que los campos no estén vacíos
     if (nombreUsuario.isEmpty() || contrasena.isEmpty()) {
         JOptionPane.showMessageDialog(this, "Por favor, ingrese un nombre de usuario y una contraseña.");
-        return;  // Si los campos están vacíos, salir del método
+        return;
     }
 
-    // Crear el registro que se guardará en el archivo usuarios.txt
     String registro = "\n" + "usuario=" + nombreUsuario + "\n"+ "contraseña=" + contrasena + "\n" ;
 
-    // Guardar la información en el archivo usuarios.txt
     try (BufferedWriter writer = new BufferedWriter(new FileWriter("usuarios.txt", true))) {
-        writer.write(registro);  // Escribir el registro al final del archivo
+        writer.write(registro);
         JOptionPane.showMessageDialog(this, "¡Administrador agregado exitosamente!");
-        // Borrar los campos de texto después de agregar el administrador
         TxtFieldNombreUsuario.setText("");
         TxtFieldContrasena.setText("");
 
-        // Redirigir al frame de inicio
-        inicio inicioFrame = new inicio();  // Crear una nueva instancia del frame de inicio
-        inicioFrame.setVisible(true);  // Mostrar el frame de inicio
-        this.dispose();  // Cerrar el frame actual (nuevo administrador)
+        inicio inicioFrame = new inicio(); 
+        inicioFrame.setVisible(true);
+        this.dispose();
     } catch (IOException e) {
         JOptionPane.showMessageDialog(this, "Error al guardar el nuevo administrador.");
     }
     }//GEN-LAST:event_BtnAgregarAdministadorActionPerformed
-
     /**
      * @param args the command line arguments
      */

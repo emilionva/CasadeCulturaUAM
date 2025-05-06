@@ -16,7 +16,6 @@ import java.io.IOException;
  * @author emilionava
  */
 public class login extends javax.swing.JFrame {
-    
     private String user= "";
     private String password="";
     /**
@@ -25,12 +24,11 @@ public class login extends javax.swing.JFrame {
     public login() {
         initComponents();
         setTitle("Casa de la Cultura - UAM Azcapotzalco :: Log-In ");
-        setSize(654, 400);  // Establece el tamaño manual de la ventana
+        setSize(654, 400);
         setLocationRelativeTo(null);
-        
     }
     private String[] obtenerCredenciales() {
-    String[] credenciales = new String[2]; // [0] para usuario, [1] para contraseña
+    String[] credenciales = new String[2];
 
     try (BufferedReader br = new BufferedReader(new FileReader("usuarios.txt"))) {
         String linea;
@@ -190,14 +188,10 @@ public class login extends javax.swing.JFrame {
 
     private void LoginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginButtonActionPerformed
         // TODO add your handling code here:
-       // Obtiene las credenciales desde el archivo
     String[] credenciales = obtenerCredenciales();
 
-    // Obtiene el texto introducido por el usuario
     String usuarioIngresado = UserField.getText();
     String contraseñaIngresada = new String(PswdField.getPassword());
-
-    // Verifica si los campos están vacíos
     //if (usuarioIngresado.equals("") || contraseñaIngresada.equals("")) {
       //  JOptionPane.showMessageDialog(null, "Por favor ingrese tanto el usuario como la contraseña.");
         if (UserField.getText().equals("")) {
@@ -207,21 +201,17 @@ public class login extends javax.swing.JFrame {
         JOptionPane.showMessageDialog( null, "Por favor ingrese la contraseña");
         }
         else {
-        // Verifica si el usuario y la contraseña coinciden con las credenciales del archivo
         if (usuarioIngresado.equals(credenciales[0]) && contraseñaIngresada.equals(credenciales[1])) {
             JOptionPane.showMessageDialog(null, "Inicio de sesión exitoso");
-            // Aquí puedes agregar la acción que desees después de un inicio de sesión exitoso
-            inicio ventanaInicio = new inicio(); // Instanciar la ventana de inicio
-            ventanaInicio.setVisible(true); // Hacer visible la ventana de inicio
+            inicio ventanaInicio = new inicio();
+            ventanaInicio.setVisible(true);
 
-    // Cerrar la ventana de login después de iniciar sesión (opcional)
     this.dispose();
         } else {
             JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrecta", "Mensaje", JOptionPane.ERROR_MESSAGE);
         }
     }
     }//GEN-LAST:event_LoginButtonActionPerformed
-
     /**
      * @param args the command line arguments
      */

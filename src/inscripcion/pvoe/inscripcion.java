@@ -25,16 +25,16 @@ public class inscripcion extends javax.swing.JFrame {
         setTitle("Casa de la Cultura - UAM Azcapotzalco :: Inscripción ");
         setSize(800, 500);
         setLocationRelativeTo(null);
-        // Añadir listeners para controlar la selección de géneros
+
         RBMasculino.addItemListener(new ItemListener() {
             @Override
             public void itemStateChanged(ItemEvent e) {
                 if (RBMasculino.isSelected()) {
-                    RBFemenino.setEnabled(false);  // Deshabilitar "Femenino"
-                    RBNoEspecificado.setEnabled(false);  // Deshabilitar "No especificado"
+                    RBFemenino.setEnabled(false);
+                    RBNoEspecificado.setEnabled(false);
                 } else {
-                    RBFemenino.setEnabled(true);  // Habilitar "Femenino"
-                    RBNoEspecificado.setEnabled(true);  // Habilitar "No especificado"
+                    RBFemenino.setEnabled(true);
+                    RBNoEspecificado.setEnabled(true);
                 }
             }
         });
@@ -43,11 +43,11 @@ public class inscripcion extends javax.swing.JFrame {
             @Override
             public void itemStateChanged(ItemEvent e) {
                 if (RBFemenino.isSelected()) {
-                    RBMasculino.setEnabled(false);  // Deshabilitar "Masculino"
-                    RBNoEspecificado.setEnabled(false);  // Deshabilitar "No especificado"
+                    RBMasculino.setEnabled(false);
+                    RBNoEspecificado.setEnabled(false);
                 } else {
-                    RBMasculino.setEnabled(true);  // Habilitar "Masculino"
-                    RBNoEspecificado.setEnabled(true);  // Habilitar "No especificado"
+                    RBMasculino.setEnabled(true);
+                    RBNoEspecificado.setEnabled(true);
                 }
             }
         });
@@ -56,17 +56,16 @@ public class inscripcion extends javax.swing.JFrame {
             @Override
             public void itemStateChanged(ItemEvent e) {
                 if (RBNoEspecificado.isSelected()) {
-                    RBFemenino.setEnabled(false);  // Deshabilitar "Femenino"
-                    RBMasculino.setEnabled(false);  // Deshabilitar "Masculino"
+                    RBFemenino.setEnabled(false);
+                    RBMasculino.setEnabled(false);
                 } else {
-                    RBFemenino.setEnabled(true);  // Habilitar "Femenino"
-                    RBMasculino.setEnabled(true);  // Habilitar "Masculino"
+                    RBFemenino.setEnabled(true);
+                    RBMasculino.setEnabled(true);
                 }
             }
         });
     }
     private void guardarRegistro() {
-        // Obtener los datos del formulario
         String nombre = TxtFieldNombre.getText();
         String primerApellido = TxtFieldPriApellido.getText();
         String segundoApellido = TxtFieldSegApellido.getText();
@@ -76,7 +75,6 @@ public class inscripcion extends javax.swing.JFrame {
         String telefonoEmergencia = TxtFieldTelEmergencia.getText();
         String telefonoContacto = TxtFieldTelContacto.getText();
 
-        // Formatear el contenido para el archivo
         String contenido = "Nombre: " + nombre + "\n" +
                            "Primer Apellido: " + primerApellido + "\n" +
                            "Segundo Apellido: " + segundoApellido + "\n" +
@@ -84,26 +82,24 @@ public class inscripcion extends javax.swing.JFrame {
                            "Género: " + genero + "\n" +
                            "Dirección: " + direccion + "\n" +
                            "Teléfono de emergencia: " + telefonoEmergencia + "\n" +
-                           "Teléfono de contacto: " + telefonoContacto + "\n\n";
+                           "Teléfono de contacto: " + telefonoContacto + "\n";
 
-        // Guardar la información en un archivo .txt
         try {
-            FileWriter fw = new FileWriter("registrosUsuarios.txt", true); // 'true' para agregar al archivo si ya existe
+            FileWriter fw = new FileWriter("registrosUsuarios.txt", true);
             BufferedWriter bw = new BufferedWriter(fw);
             bw.write(contenido);
             bw.close();
             JOptionPane.showMessageDialog(this, "Registro guardado correctamente.");
             limpiarFormulario();
-            // Crear e iniciar el nuevo frame (talleres)
         talleres talleresFrame = new talleres();
-        talleresFrame.setVisible(true); // Mostrar la ventana de talleres
-        this.dispose(); // Cerrar el JFrame actual (FormularioRegistro)
+        talleresFrame.setVisible(true);
+        this.dispose();
         } catch (IOException ex) {
             JOptionPane.showMessageDialog(this, "Error al guardar el registro.");
         }
     }
-    private void limpiarFormulario() {
-        // Limpiar los campos de texto
+        private void limpiarFormulario() {
+
         TxtFieldNombre.setText("");
         TxtFieldPriApellido.setText("");
         TxtFieldSegApellido.setText("");
@@ -359,13 +355,11 @@ public class inscripcion extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BtnEnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEnviarActionPerformed
-        // Primero, guarda el registro antes de proceder con la navegación a talleres
     guardarRegistro();
     
-    // Crear e iniciar el nuevo frame (talleres)
     talleres talleresFrame = new talleres();
-    talleresFrame.setVisible(true); // Mostrar la ventana de talleres
-    this.dispose(); // Cerrar el JFrame actual (FormularioRegistro)
+    talleresFrame.setVisible(true);
+    this.dispose();
     }//GEN-LAST:event_BtnEnviarActionPerformed
 
     private void TxtFieldTelContactoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtFieldTelContactoActionPerformed
