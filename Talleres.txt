@@ -1,0 +1,6 @@
+Teatro,Rodrigo,8am-10am,$500,$550
+Danza,Mayra,10am-12pm,$300,$400
+Lectura,Ricardo,5pm-6pm,$150,$200
+Redacción,Rodrigo,5pm-6pm,$300,$450
+Dibujo,Katia,1pm-3pm,$750,$1200
+Pintura,Katia,3pm-5pm,$300,$500
